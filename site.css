@@ -1,0 +1,75 @@
+.navbar{
+	margin-top: 0;
+	margin-bottom: 0;
+}
+#head-bar{
+	background-color: #FFD458;
+	height: 100%;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.navbar-nav li {
+ line-height: 50px;
+ font-size: 20px;
+}
+
+#header-logo{
+	font-size: 50px;
+}
+
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 50px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 50px;
+  background-color: #FFD458;
+  padding-left: 10px;
+}
+
+.index-background{
+	
+	height: 80%;
+}
+
+.login-button-wrapper{
+	height: 100%;
+}
+
+.login-button-wrapper .btn-primary{
+	position: relative;
+	top: 50%;
+	height: 70px;
+	font-size: 25px;
+	width: 200px;
+	margin-top: -35px;
+	border-radius: 10px;
+}
+
+#student-login{
+	background-color: #AA62B2;
+	border-color: #AA62B2;
+}
+
+#mentor-login{
+	background-color: #05B285;
+	border-color: #05B285;
+}
+
+#index-content{
+	height: 491px;
+	background-image: url("image/index_teacher_students.jpg");
+	opacity: 0.7;
+	background-repeat: no-repeat;
+	background-size: cover;
+}

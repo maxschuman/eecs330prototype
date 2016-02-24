@@ -24,17 +24,35 @@
 		<div class="row" id="login-header"></div>
 		<div class="row" id="index-content">
 			<div class="col-sm-6 login-button-wrapper">
-				<a href="student_login.html">
-					<button class="btn-primary" id="student-login">Student Log-in</button>
-				</a>
+				<button class="btn-primary" id="student-login" data-toggle="modal" data-target="#LoginModal">Student Log-in</button>
 			</div>
 			<div class="col-sm-6 login-button-wrapper">
-				<a href="mentor_login.html">
-					<button class="btn-primary" id="mentor-login">Mentor Log-in</button>
-				</a>
+				<button class="btn-primary" id="mentor-login" data-toggle="modal" data-target="#LoginModal">Mentor Log-in</button>
 			</div>
 		</div>
 	</div>
+
+<div id="LoginModal" class="modal fade" role="log-in">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <form class="form-signin">
+        <h2 class="form-signin-heading" id="signin-heading">Student Log-in</h2>
+        <label for="inputUsername" class="sr-only">Username</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <div class="btn-group btn-group-lg">
+        	<button type="button" class="btn btn-success" type="submit">Sign in</button>
+        	<button type="button" class="btn btn-danger" data-dismiss="modal">Back</button>
+      	</div>
+      </div>
+    </div>
+
+  </div>
+</div>
 	
 	<footer class="footer">
 		Team SPAC 10:30<br>
@@ -42,3 +60,5 @@
 	</footer>
 </body>
 </html>
+
+<script type="text/javascript" src="index.js"></script>

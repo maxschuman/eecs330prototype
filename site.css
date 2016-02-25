@@ -175,11 +175,15 @@ body {
 .panel{
   font:sans-serif;
 }
-.panel-body{
+.panel-body-homepage{
   font-weight: normal;
   font-size: 30px;
   color: #FFD458;
   line-height: 50px;
+}
+.panel-body-chat-sidebar{
+  font-weight: normal;
+  color: #FFD458;
 }
 #panel-holder{
   height: 300px;
@@ -223,4 +227,47 @@ label{
 
 #question-alert{
   margin-top: 3px;
+}
+
+.chat-room{
+  height: 440px;
+  background-color: white;
+  margin-top: 10px;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+#chat-sidebar{
+  height: 440px;
+  background-color: white;
+  margin-top: 10px;
+  padding: 10px;
+}
+#chat-thumbs{
+  min-height: 400px;
+}
+.messages{
+  height: 380px;
+}
+.message-input{
+  height: 50px;
+  line-height: 50px;
+  position: relative;
+  bottom: 0;
+  border-top: 1px solid #F0F0F0;
+}
+
+#message{
+  width: 380px;
+}
+#message-send{
+  margin-top: 2px;
+}
+
+.panel-default:hover{
+  border: 2px solid #FFD458;
+}
+.panel-default{
+  border-width: 2px;
+  -webkit-transition: border-color 0.5s;
 }

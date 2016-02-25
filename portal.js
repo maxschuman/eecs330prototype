@@ -7,9 +7,16 @@ for(i = 1; i <= 5; i++){
 		for(i = 1; i <= 5; i++){
 			if(document.getElementById("portal-nav-btn-" + i).classList.contains("active")){
 				document.getElementById("portal-nav-btn-" + i).classList.remove("active");
+				document.getElementById("portal-page-" + i).classList.add("hide");
 			}
 		}
 
 		e.target.classList.add("active");
+
+		for(i = 1; i <= 5; i++){
+			if(document.getElementById("portal-nav-btn-" + i).classList.contains("active")){
+				document.getElementById("portal-page-" + i).classList.remove("hide");
+			}
+		}
 	};
 }

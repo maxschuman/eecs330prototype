@@ -10,12 +10,12 @@
 }
 
 .navbar-nav li {
- line-height: 50px;
+ line-height: 60px;
  font-size: 20px;
 }
 
 #header-logo{
-	font-size: 50px;
+	font-size: 60px;
 }
 
 
@@ -67,7 +67,7 @@ body {
 }
 
 #index-content{
-	height: 491px;
+	height: 481px;
 	background-image: url("image/index_teacher_students.jpg");
 	opacity: 0.7;
 	background-repeat: no-repeat;
@@ -110,7 +110,8 @@ body {
 }
 
 .portal{
-  height: 491px;
+  height: 481px;
+  background-color: lightgray;
 }
 .sidenav{
   height: 100%;
@@ -125,7 +126,7 @@ body {
   text-align: center;
   font-size: 44px;
   padding-top: 15px;
-  height: 98px;
+  height: 96px;
   -webkit-transition: background-color 0.5s;
 }
 
@@ -136,4 +137,27 @@ body {
 .active{
   background-color: #05B285;
   border-right: 0px;
+}
+
+.profile-pic-holder{
+  height: 300px;
+  background-image: url("image/profile.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 2px solid #FFD458;
+  border-radius: 5px;
+}
+
+.profile-header{
+  height: 100px;
+  line-height: 100px;
+}
+
+.profile-name{
+  font-size: 50px;
+  color: #FFD458;
+}
+
+.hide{
+  display: none;
 }

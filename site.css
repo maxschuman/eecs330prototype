@@ -10,12 +10,13 @@
 }
 
 .navbar-nav li {
- line-height: 60px;
- font-size: 20px;
+ line-height: 56px;
+ font-size: 19px;
 }
 
 #header-logo{
 	font-size: 60px;
+  color: #F0F0F0;
 }
 
 
@@ -111,7 +112,7 @@ body {
 
 .portal{
   height: 481px;
-  background-color: lightgray;
+  background-color: #F0F0F0;
 }
 .sidenav{
   height: 100%;
@@ -120,7 +121,7 @@ body {
 
 .portal-nav-btn{
   margin-left: 0;
-  color: white;
+  color: #F0F0F0;
   border: 2px solid grey;
   background-color: #AA62B2;
   text-align: center;
@@ -149,8 +150,10 @@ body {
 }
 
 .profile-header{
-  height: 100px;
-  line-height: 100px;
+  height: 96px;
+  line-height: 96px;
+  border-bottom: 1px lightgray solid;
+  margin-bottom: 5px;
 }
 
 .profile-name{
@@ -160,4 +163,53 @@ body {
 
 .hide{
   display: none;
+}
+
+.profile-username{
+  float: right;
+  margin-top: 43px;
+  color: grey;
+}
+
+.panel{
+  font:sans-serif;
+}
+.panel-body{
+  font-weight: normal;
+  font-size: 30px;
+  color: #FFD458;
+  line-height: 50px;
+}
+
+#question{
+  resize: none;
+  height: 200px;
+  font-size: 25px;
+}
+
+label{
+  font-size: 30px;
+  color: #FFD458;
+  display: block;
+}
+
+#tags{
+  min-width: 100%;
+}
+
+.bootstrap-tagsinput .tag{
+  color: #F0F0F0;
+}
+
+.label-info{
+  background-color: #FFD458;
+}
+
+#question-submit{
+  background-color: #FFD458;
+  border-color: #FFD458;
+  color: #F0F0F0;
+  width: 140px;
+  height: 50px;
+  font-size: 20px;
 }

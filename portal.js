@@ -67,7 +67,7 @@ function panelize_question(question){
 
 
 	//Writing panel div for a question
-	var panel_string = "<div class='panel panel-default'><div class='panel-heading'><span class='" + glyphicon_class + "''></span>" + status_statement + ", posted " + days_ago + " day(s) ago</div><div class='panel-body'>" + question.name + "</div><div class='panel-footer'>Category: " + question.category;
+	var panel_string = "<div class='panel panel-default'><div class='panel-heading'><span class='" + glyphicon_class + "''></span>" + status_statement + ", posted " + days_ago + " day(s) ago</div><div class='panel-body'>" + question.name + "</div><div class='panel-footer'>Tags: " + question.category;
 	if(question.status == "waiting"){
 		panel_string += "</div></div>";
 	}
@@ -95,7 +95,7 @@ function validateForm() {
     }
 
     var y = document.forms["question-form"]["tags"].value;
-    if (x == null || x == "") {
+    if (y == null || y == "") {
         alert("Please add at least one tag to your question.");
         return false;
     }
@@ -103,8 +103,9 @@ function validateForm() {
     return true;
 }
 
-var submitQuestion = document.getElementById("question-submit");
-submitQuestion.onsubmit = function(e){
+var questionForm = document.getElementById("question-form");
+questionForm.onsubmit = function(e){
+	e.preventDefault();
 	if(validateForm()){
 		var cat_string = document.forms["question-form"]["tags"].value.replace(",", ", ");
 
@@ -117,5 +118,7 @@ submitQuestion.onsubmit = function(e){
 		});
 		fill_question_panel(questions_asked);
 	}
-	return validateForm();
+	e.target.reset();
+	$(".tag").remove();
+	$("#QuestionModal").modal();
 }

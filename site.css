@@ -108,3 +108,32 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+.portal{
+  height: 491px;
+}
+.sidenav{
+  height: 100%;
+  padding: 0;
+}
+
+.portal-nav-btn{
+  margin-left: 0;
+  color: white;
+  border: 2px solid grey;
+  background-color: #AA62B2;
+  text-align: center;
+  font-size: 44px;
+  padding-top: 15px;
+  height: 98px;
+  -webkit-transition: background-color 0.5s;
+}
+
+.portal-nav-btn:hover{
+  background-color: #05B285;
+}
+
+.active{
+  background-color: #05B285;
+  border-right: 0px;
+}

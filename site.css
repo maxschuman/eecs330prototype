@@ -119,6 +119,7 @@ body {
   padding: 0;
 }
 
+
 .portal-nav-btn{
   margin-left: 0;
   color: #F0F0F0;
@@ -180,6 +181,9 @@ body {
   color: #FFD458;
   line-height: 50px;
 }
+#panel-holder{
+  height: 300px;
+}
 
 #question{
   resize: none;
@@ -210,6 +214,13 @@ label{
   border-color: #FFD458;
   color: #F0F0F0;
   width: 180px;
-  height: 50px;
+  height: 47px;
   font-size: 20px;
+}
+#panel-holder-label{
+  color:#05B285;
+}
+
+#question-alert{
+  margin-top: 3px;
 }

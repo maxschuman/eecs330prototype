@@ -89,14 +89,18 @@ function fill_question_panel(questions){
 
 function validateForm() {
     var x = document.forms["question-form"]["question"].value;
+    var alert = document.getElementById("question-alert");
+    var message = document.getElementById("question-alert-message");
     if (x == null || x == "") {
-        alert("Please enter a question.");
+    	message.innerHTML = "Please enter a question.";
+    	alert.classList.remove("hide");
         return false;
     }
 
     var y = document.forms["question-form"]["tags"].value;
     if (y == null || y == "") {
-        alert("Please add at least one tag to your question.");
+    	message.innerHTML = "Please add at least one tag to your question.";
+    	alert.classList.remove("hide");
         return false;
     }
 
@@ -117,8 +121,12 @@ questionForm.onsubmit = function(e){
 			category: cat_string
 		});
 		fill_question_panel(questions_asked);
+		e.target.reset();
+		$(".tag").remove();
+		if(!document.getElementById("question-alert").classList.contains("hide")){
+			document.getElementById("question-alert").classList.add("hide");
+		}
+		$("#QuestionModal").modal();
 	}
-	e.target.reset();
-	$(".tag").remove();
-	$("#QuestionModal").modal();
+	
 }

@@ -126,7 +126,7 @@ body {
   border: 2px solid grey;
   background-color: #AA62B2;
   text-align: center;
-  font-size: 44px;
+  font-size: 40px;
   padding-top: 15px;
   height: 98px;
   -webkit-transition: background-color 0.5s;
@@ -295,4 +295,18 @@ label{
 }
 .panel-default.current-chat{
   border: 2px solid #FFD458;
+}
+
+.q-selection-header{
+  border-bottom: 1px solid lightgray;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  color: #FFD458;
+  font-size: 44px;
+}
+
+#available-questions{
+  min-height: 390px;
+  height: 440px;
 }

@@ -1,48 +1,48 @@
 var btn;
-var questions_asked = [];
+var questions_responded = [];
 message_chain1 = [];
 message_chain2 = [];
 message_chain3 = [];
 message_chain1.push({
-	text: "What is the best school in America for human-computer interaction?",
-	sender: "You",
+	text: "Should I mention my many entrepreneurial exploits when I apply to college?",
+	sender: "Student",
 	timestamp: new Date("2016-02-21 12:55:33")
 });
 message_chain1.push({
-	text: "Trump University, of course.",
-	sender: "Mentor",
+	text: "Sure. Also if you've written any books or made a large amount of money, mention that too!",
+	sender: "You",
 	timestamp: new Date("2016-02-21 12:58:38")
 });
 message_chain2.push({
 	text: "Will I get a state scholarship in Nevada to go to college?",
-	sender: "You",
+	sender: "Student",
 	timestamp: new Date("2016-02-14 12:55:33")
 });
 message_chain2.push({
-	text: "If I become president, you will.",
-	sender: "Mentor",
+	text: "That's kind of your thing, Bernie.",
+	sender: "You",
 	timestamp: new Date("2016-02-14 12:58:38")
 });
 message_chain3.push({
-	text: "What major makes the most money out of college?",
-	sender: "You",
+	text: "What college has produced the most presidents?",
+	sender: "Student",
 	timestamp: new Date("2016-02-18 12:55:33")
 });
 message_chain3.push({
-	text: "Econ/finance, followed by theatre and gender studies.",
-	sender: "Mentor",
+	text: "Harvard claims six presidents, plus four VPs.",
+	sender: "You",
 	timestamp: new Date("2016-02-18 12:58:38")
 });
-questions_asked.push(
+questions_responded.push(
 {
-	name: "What is the best school in America for human-computer interaction?",
+	name: "Should I mention my many entrepreneurial exploits when I apply to college?",
 	date_posted: new Date("2016-02-21"),
 	status: "closed",
 	respondent_name: "Donald Trump",
-	category: "Computer Science Programs",
+	category: "Application, Self-Presentation",
 	messages: message_chain1
 });
-questions_asked.push(
+questions_responded.push(
 {
 	name: "Will I get a state scholarship in Nevada to go to college?",
 	date_posted: new Date("2016-02-14"),
@@ -51,19 +51,123 @@ questions_asked.push(
 	category: "Scholarships, Nevada",
 	messages: message_chain2
 });
-questions_asked.push(
+questions_responded.push(
 {
-	name: "What major makes the most money out of college?",
+	name: "What college has produced the most presidents?",
 	date_posted: new Date("2016-02-18"),
 	status: "closed",
 	respondent_name: "Hillary Clinton",
-	category: "General Majors",
+	category: "Fun Facts",
 	messages: message_chain3
 });
 
-questions_asked.sort(function(a,b){return b.date_posted.getTime() - a.date_posted.getTime()});
+
+
+
+
+
+var questions_available = [];
+
+questions_available.push({
+	name: "What scholarships do the Naval Academy offer?",
+	date_posted: new Date(),
+	status: "waiting",
+	respondent_name: "Ben Carson",
+	category: "Scholarships",
+	messages: [{text: "What scholarships do the Naval Academy offer?",
+	sender: "Student",
+	timestamp: new Date()}]
+
+});
+questions_available.push({
+	name: "What schools in Texas are religiously-affiliated?",
+	date_posted: new Date(),
+	status: "waiting",
+	respondent_name: "Ted Cruz",
+	category: "Religious Universities",
+	messages: [{text: "What schools in Texas are religiously-affiliated?",
+	sender: "Student",
+	timestamp: new Date()}]
+
+});
+questions_available.push({
+	name: "How important is legacy at Ivy League schools?",
+	date_posted: new Date(),
+	status: "waiting",
+	respondent_name: "Jeb Bush",
+	category: "Ivy League",
+	messages: [{text: "How important is legacy at Ivy League schools?",
+	sender: "Student",
+	timestamp: new Date()}]
+
+});
+questions_available.push({
+	name: "Which Ivy League school is the third-best?",
+	date_posted: new Date(),
+	status: "waiting",
+	respondent_name: "Martin O'Malley",
+	category: "Ivy League",
+	messages: [{text: "Which Ivy League school is the third-best?",
+	sender: "Student",
+	timestamp: new Date()}]
+
+});
+
+
+function panelize_available_question(question, i){
+	var days_ago;
+
+	days_ago = (new Date()).getUTCDate() - question.date_posted.getDate();
+
+
+	//Writing panel div for a question
+	var panel_string = "<div class='panel panel-default' id='available-question-" + i + "'><div class='panel-heading'>Posted " + days_ago + " day(s) ago by " + question.respondent_name + "</div><div class='panel-body panel-body-homepage'>" + question.name + "</div><div class='panel-footer'>Tags: " + question.category;
+
+	return panel_string;
+}
+
+var selected_question;
+
+function fill_available_questions(){
+	var current_question;
+	$("#available-questions").empty();
+	for(var i = 0; i < questions_available.length; i++){
+		current_question = questions_available[i];
+		$("#available-questions").append(panelize_available_question(current_question, i));
+
+		$("#available-question-" + i).on('click', function(e){
+			selected_question = questions_available[Number(($(this).closest(".panel").attr("id"))[($(this).closest(".panel").attr("id")).length-1])];
+			$("#QuestionModal").modal();
+		});
+	}
+
+
+}
+
+
+$("#answer-button").on('click', function(e){
+	$("#QuestionModal").modal("hide");
+	selected_question.status = "in progress";
+	var index = questions_available.indexOf(selected_question);
+	questions_available.splice(index, 1);
+	questions_responded.push(selected_question);
+	questions_responded.sort(function(a,b){return b.date_posted.getTime() - a.date_posted.getTime()});
+	selected_question = null;
+
+	fill_question_panel(questions_responded);
+	fill_chat_sidebar(questions_responded);
+	fill_available_questions(questions_available);
+
+	switch_to_chat(0);
+
+	$("#portal-page-2").addClass("hide");
+	$("#portal-page-3").removeClass("hide");
+})
+
+
+questions_responded.sort(function(a,b){return b.date_posted.getTime() - a.date_posted.getTime()});
 var days_since = document.getElementById("days-since");
-days_since.innerHTML = "Last question posted " + ((new Date()).getDate() - questions_asked[0].date_posted.getDate()) + " day(s) ago"
+days_since.innerHTML = "Last question answered " + ((new Date()).getDate() - questions_responded[0].date_posted.getDate()) + " day(s) ago"
 
 for(i = 1; i <= 5; i++){
 	btn = document.getElementById("portal-nav-btn-" + i);
@@ -112,7 +216,7 @@ function panelize_question(question, i){
 		panel_string += "</div></div>";
 	}
 	else{
-		panel_string += ", answered by " + question.respondent_name + "</div></div>";
+		panel_string += ", asked by " + question.respondent_name + "</div></div>";
 	}
 
 	return panel_string;
@@ -168,60 +272,13 @@ function fill_chat_sidebar(questions){
 	}
 }
 
-fill_chat_sidebar(questions_asked);
-
-function validateForm() {
-    var x = document.forms["question-form"]["question"].value;
-    var alert = document.getElementById("question-alert");
-    var message = document.getElementById("question-alert-message");
-    if (x == null || x == "") {
-    	message.innerHTML = "Please enter a question.";
-    	alert.classList.remove("hide");
-        return false;
-    }
-
-    var y = document.forms["question-form"]["tags"].value;
-    if (y == null || y == "") {
-    	message.innerHTML = "Please add at least one tag to your question.";
-    	alert.classList.remove("hide");
-        return false;
-    }
-
-    return true;
-}
-
-var questionForm = document.getElementById("question-form");
-questionForm.onsubmit = function(e){
-	e.preventDefault();
-	if(validateForm()){
-		var cat_string = document.forms["question-form"]["tags"].value.replace(",", ", ");
-
-		questions_asked.push({
-			name:document.forms["question-form"]["question"].value,
-			date_posted: new Date(),
-			status: "waiting",
-			respondent_name: null,
-			category: cat_string,
-			messages: [{text: document.forms["question-form"]["question"].value, sender: "You", timestamp: new Date()}]
-		});
-		fill_question_panel(questions_asked);
-		fill_chat_sidebar(questions_asked);
-		bind_profile_to_chat();
-		e.target.reset();
-		$(".tag").remove();
-		if(!document.getElementById("question-alert").classList.contains("hide")){
-			document.getElementById("question-alert").classList.add("hide");
-		}
-		$("#QuestionModal").modal();
-	}
-	
-}
+fill_chat_sidebar(questions_responded);
 
 
 //implementing redirect from portal homepage to chat page
 function render_chat(number){
 	$(".messages").empty();
-	var current_question = questions_asked[Number(number)];
+	var current_question = questions_responded[Number(number)];
 
 	var message;
 	var header_div;
@@ -250,7 +307,7 @@ function render_chat(number){
 }
 
 function find_current_question(){
-	for(var j = 0; j < questions_asked.length; j++){
+	for(var j = 0; j < questions_responded.length; j++){
 		if($("#chat-sidenav-" + j).hasClass("current-chat")){
 			return j;
 		}
@@ -259,7 +316,7 @@ function find_current_question(){
 }
 
 function switch_to_chat(number){
-	for(var j = 0; j < questions_asked.length; j++){
+	for(var j = 0; j < questions_responded.length; j++){
 		if($("#chat-sidenav-" + j).hasClass("current-chat")){
 			$("#chat-sidenav-" + j).removeClass("current-chat");
 		}
@@ -271,7 +328,7 @@ function switch_to_chat(number){
 
 
 function bind_profile_to_chat(){
-	for(var i = 0; i < questions_asked.length; i++){
+	for(var i = 0; i < questions_responded.length; i++){
 		$("#question-" + i).on('click', function(e){
 			$("#portal-nav-btn-3").click();
 			var number = ($(this).closest(".panel").attr("id"))[($(this).closest(".panel").attr("id")).length-1];
@@ -303,7 +360,7 @@ document.forms["message-form"].onsubmit = function(e){
 	if(current_question_index == null){
 		return;
 	}
-	message_post(questions_asked[current_question_index], document.forms["message-form"]["message-input"].value);
+	message_post(questions_responded[current_question_index], document.forms["message-form"]["message-input"].value);
 	document.forms["message-form"].reset();
 	render_chat(current_question_index);
 }

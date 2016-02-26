@@ -11,7 +11,7 @@
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.js"></script>
 </head>
-<body id="index-body" onload="fill_question_panel(questions_asked); bind_profile_to_chat();">
+<body id="index-body" onload="fill_question_panel(questions_responded); bind_profile_to_chat(); fill_available_questions()">
 	<nav class="navbar navbar-default navbar-static-top" id="head-bar">
 		<div class="container">
 			<div class="navbar-header">
@@ -27,7 +27,7 @@
 		<div class="row portal">
 			<div class="col-xs-3 sidenav">
 				<div class="portal-nav-btn active" id="portal-nav-btn-1">Your Profile</div>
-				<div class="portal-nav-btn" id="portal-nav-btn-2">Ask Question</div>
+				<div class="portal-nav-btn" id="portal-nav-btn-2">Answer Question</div>
 				<div class="portal-nav-btn" id="portal-nav-btn-3">Your Chats</div>
 				<div class="portal-nav-btn" id="portal-nav-btn-4">Settings</div>
 				<div class="portal-nav-btn" id="portal-nav-btn-5">Help</div>
@@ -35,35 +35,23 @@
 			<div class="container-fluid text-left portal-page" id="portal-page-1">
 				<div class="col-xs-3">
 					<div class="profile-pic-holder"></div>
-					<h3>Student at Trump High School</h3>
-					<h4 id="days-since">Last question posted 4 days ago</h4>
+					<h3>95% Rating</h3>
+					<h4 id="days-since">Last question answered 4 days ago</h4>
 				</div>
 				<div class="col-xs-6">
 					<div class="profile-header">
 						<span class="profile-name"><b>Dylan Ong<b></span>
-						<h3 class="profile-username">dylaniscool111</h3>
+						<h3 class="profile-username">dylanisgreat118</h3>
 					</div>
-					<h1 id="panel-holder-label">Question History</h1>
+					<h1 id="panel-holder-label">Mentoring History</h1>
 					<div class="panel-group pre-scrollable" id="panel-holder">
 					</div>
 				</div>
 			</div>
 			<div class="container-fluid text-left hide portal-page" id="portal-page-2">
 				<div class="col-xs-9">
-					<form role="form" id="question-form">
-						<div class="form-group">
-							<label for="question">Ask Question</label>
-							<textarea type="question" class="form-control" id="question" placeholder="Write your question here. The more details you provide, the easier it is for a mentor to help you quickly."></textarea>
-						</div>
-						<div class="form-group">
-							<label for="Tags">Tags</label>
-							<input type="text" class="form-control" id="tags" data-role="tagsinput"/>
-						</div>
-						<button type="submit" class="btn btn-default btn-lg" id="question-submit">Post Question</button>
-					</form>
-					<div class="alert alert-danger fade in hide" id="question-alert">
-					    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-					    <span id="question-alert-message">This alert box could indicate a dangerous or potentially negative action.</span>
+					<div class="q-selection-header">Available Questions</div>
+					<div class="panel-group pre-scrollable" id="available-questions">
 					</div>
 				</div>
 			</div>
@@ -102,10 +90,13 @@
 	    <!-- Modal content-->
 	    <div class="modal-content">
 	      <div class="modal-body">
-	      		Your question has successfully been posted.
+	      		Are you sure you want to answer this question?
 	      </div>
 	      <div class="modal-footer">
-	      	<button type="button" class="btn btn-danger" data-dismiss="modal">Dismiss</button>
+	      	<div class="btn-group btn-lg">
+	      		<button type="button" class="btn btn-success" id="answer-button">Answer</button>
+	      		<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+	      	</div>
 	      </div>
 	    </div>
 
@@ -119,4 +110,4 @@
 </body>
 </html>
 
-<script type="text/javascript" src="portal.js"></script>
+<script type="text/javascript" src="mentor_portal.js"></script>

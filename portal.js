@@ -1,10 +1,37 @@
 var btn;
 var questions_asked = [];
 message_chain1 = [];
+message_chain2 = [];
+message_chain3 = [];
 message_chain1.push({
 	text: "What is the best school in America for human-computer interaction?",
 	sender: "You",
 	timestamp: new Date("2016-02-21 12:55:33")
+});
+message_chain1.push({
+	text: "Trump University, of course.",
+	sender: "Mentor",
+	timestamp: new Date("2016-02-21 12:58:38")
+});
+message_chain2.push({
+	text: "Will I get a state scholarship in Nevada to go to college?",
+	sender: "You",
+	timestamp: new Date("2016-02-14 12:55:33")
+});
+message_chain2.push({
+	text: "If I become president, you will.",
+	sender: "Mentor",
+	timestamp: new Date("2016-02-14 12:58:38")
+});
+message_chain3.push({
+	text: "What major makes the most money out of college?",
+	sender: "You",
+	timestamp: new Date("2016-02-18 12:55:33")
+});
+message_chain3.push({
+	text: "Econ/finance, followed by theatre and gender studies.",
+	sender: "Mentor",
+	timestamp: new Date("2016-02-18 12:58:38")
 });
 questions_asked.push(
 {
@@ -22,7 +49,7 @@ questions_asked.push(
 	status: "closed",
 	respondent_name: "Bernie Sanders",
 	category: "Scholarships, Nevada",
-	messages: null
+	messages: message_chain2
 });
 questions_asked.push(
 {
@@ -31,7 +58,7 @@ questions_asked.push(
 	status: "closed",
 	respondent_name: "Hillary Clinton",
 	category: "General Majors",
-	messages: null
+	messages: message_chain3
 });
 
 questions_asked.sort(function(a,b){return b.date_posted.getTime() - a.date_posted.getTime()});
@@ -175,10 +202,11 @@ questionForm.onsubmit = function(e){
 			status: "waiting",
 			respondent_name: null,
 			category: cat_string,
-			messages: null
+			messages: [{text: document.forms["question-form"]["question"].value, sender: "You", timestamp: new Date()}]
 		});
 		fill_question_panel(questions_asked);
 		fill_chat_sidebar(questions_asked);
+		bind_profile_to_chat();
 		e.target.reset();
 		$(".tag").remove();
 		if(!document.getElementById("question-alert").classList.contains("hide")){
@@ -187,4 +215,95 @@ questionForm.onsubmit = function(e){
 		$("#QuestionModal").modal();
 	}
 	
+}
+
+
+//implementing redirect from portal homepage to chat page
+function render_chat(number){
+	$(".messages").empty();
+	var current_question = questions_asked[Number(number)];
+
+	var message;
+	var header_div;
+
+	current_question.messages.sort(function(a,b){return a.timestamp.getTime() - b.timestamp.getTime()});
+	for(var i = 0; i < current_question.messages.length; i++){
+		message = current_question.messages[i];
+		
+		message_div = $(document.createElement("div")).addClass("message").addClass("message-user");
+		message_div.text(message.text);
+
+		header_div = $(document.createElement("h5")).text(message.timestamp.toTimeString().substr(0,5));
+
+		if(message.sender == "You"){
+			message_div.addClass("message-user");
+		}
+		else{
+			message_div.addClass("message-other");
+			header_div.append("&#09<b>" + current_question.respondent_name + "</b>");
+		}
+		header_div.prependTo(message_div);
+
+		$(".messages").append(message_div);
+		$(".messages").scrollTop($(".messages")[0].scrollHeight);
+	}
+}
+
+function find_current_question(){
+	for(var j = 0; j < questions_asked.length; j++){
+		if($("#chat-sidenav-" + j).hasClass("current-chat")){
+			return j;
+		}
+	}
+	return null;
+}
+
+function switch_to_chat(number){
+	for(var j = 0; j < questions_asked.length; j++){
+		if($("#chat-sidenav-" + j).hasClass("current-chat")){
+			$("#chat-sidenav-" + j).removeClass("current-chat");
+		}
+	}
+
+	$("#chat-sidenav-" + number).addClass("current-chat");
+	render_chat(number);
+}
+
+
+function bind_profile_to_chat(){
+	for(var i = 0; i < questions_asked.length; i++){
+		$("#question-" + i).on('click', function(e){
+			$("#portal-nav-btn-3").click();
+			var number = ($(this).closest(".panel").attr("id"))[($(this).closest(".panel").attr("id")).length-1];
+			switch_to_chat(number);
+		});
+
+		$("#chat-sidenav-" + i).on('click', function(e){
+			var number = ($(this).closest(".panel").attr("id"))[($(this).closest(".panel").attr("id")).length-1];
+			switch_to_chat(number);
+		});
+
+	}
+	switch_to_chat(0);
+}
+
+function message_post(question, text){
+	var new_message = {
+		text: text,
+		sender: "You",
+		timestamp: new Date()
+	};
+	question.messages.push(new_message);
+
+}
+
+document.forms["message-form"].onsubmit = function(e){
+	e.preventDefault();
+	var current_question_index = find_current_question();
+	if(current_question_index == null){
+		return;
+	}
+	message_post(questions_asked[current_question_index], document.forms["message-form"]["message-input"].value);
+	document.forms["message-form"].reset();
+	render_chat(current_question_index);
 }

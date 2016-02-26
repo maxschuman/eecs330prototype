@@ -11,7 +11,7 @@
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.js"></script>
 </head>
-<body id="index-body" onload="fill_question_panel(questions_asked);">
+<body id="index-body" onload="fill_question_panel(questions_asked); bind_profile_to_chat();">
 	<nav class="navbar navbar-default navbar-static-top" id="head-bar">
 		<div class="container">
 			<div class="navbar-header">
@@ -71,11 +71,11 @@
 				<div class="col-sm-6">
 					<div class="container-fluid">
 						<div class="jumbotron chat-room">
-							<div class="messages"></div>
+							<div class="messages pre-scrollable"></div>
 							<div class="message-input">
-								<form class="form-inline">
+								<form id="message-form" class="form-inline">
 									<div class="form-group">
-										<input type="text" class="form-control" id="message" placeholder="Type a message..."/>
+										<textarea type="textarea" class="form-control" id="message-input" placeholder="Type a message..."/></textarea>
 									</div>
 									<button type="submit" class="btn btn-default" id="message-send">Send</button>
 								</form>

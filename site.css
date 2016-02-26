@@ -68,7 +68,7 @@ body {
 }
 
 #index-content{
-	height: 481px;
+	height: 494px;
 	background-image: url("image/index_teacher_students.jpg");
 	opacity: 0.7;
 	background-repeat: no-repeat;
@@ -111,7 +111,7 @@ body {
 }
 
 .portal{
-  height: 481px;
+  height: 494px;
   background-color: #F0F0F0;
 }
 .sidenav{
@@ -128,7 +128,7 @@ body {
   text-align: center;
   font-size: 44px;
   padding-top: 15px;
-  height: 96px;
+  height: 98px;
   -webkit-transition: background-color 0.5s;
 }
 
@@ -246,6 +246,26 @@ label{
 #chat-thumbs{
   min-height: 400px;
 }
+.message{
+  min-width: 200px;
+  max-width: 330px;
+  font-size: 15px;
+  line-height: 30px;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px;
+  font-weight: normal;
+}
+.message-user{
+  background-color: #05B285;
+  color: #F0F0F0;
+  float: right;
+}
+.message-other{
+  background-color: #F0F0F0;
+  color: #05B285;
+  float: left;
+}
 .messages{
   height: 380px;
 }
@@ -255,10 +275,12 @@ label{
   position: relative;
   bottom: 0;
   border-top: 1px solid #F0F0F0;
+  padding-top: 10px;
 }
 
-#message{
-  width: 380px;
+#message-input{
+  width: 360px;
+  resize: none;
 }
 #message-send{
   margin-top: 2px;
@@ -270,4 +292,7 @@ label{
 .panel-default{
   border-width: 2px;
   -webkit-transition: border-color 0.5s;
+}
+.panel-default.current-chat{
+  border: 2px solid #FFD458;
 }

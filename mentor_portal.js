@@ -157,11 +157,14 @@ $("#answer-button").on('click', function(e){
 	fill_question_panel(questions_responded);
 	fill_chat_sidebar(questions_responded);
 	fill_available_questions(questions_available);
+	bind_profile_to_chat();
 
 	switch_to_chat(0);
 
 	$("#portal-page-2").addClass("hide");
+	$("#portal-nav-btn-2").removeClass("active");
 	$("#portal-page-3").removeClass("hide");
+	$("#portal-nav-btn-3").addClass("active");
 })
 
 

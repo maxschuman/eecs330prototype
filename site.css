@@ -194,12 +194,12 @@ body {
 .panel-body-homepage{
   font-weight: normal;
   font-size: 30px;
-  color: #FFD458;
+  color: #880101;
   line-height: 50px;
 }
 .panel-body-chat-sidebar{
   font-weight: normal;
-  color: #FFD458;
+  color: #880101;
 }
 #panel-holder{
   height: 300px;
@@ -208,13 +208,15 @@ body {
 #question{
   resize: none;
   height: 200px;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 label{
   font-size: 30px;
-  color: #51741A;
+  color: #557F01;
   display: block;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 #tags{
@@ -223,22 +225,24 @@ label{
 
 .bootstrap-tagsinput .tag{
   color: #F0F0F0;
+  resize: none;
 }
 
 .label-info{
-  background-color: #FFD458;
+  background-color: #880101;
 }
 
 #question-submit{
-  background-color: #FFD458;
-  border-color: #FFD458;
-  color: #F0F0F0;
+  background-color: #880101;
+  border-color: #CC8686;
+  color: #EEEAEA;
   width: 180px;
   height: 47px;
   font-size: 20px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 #panel-holder-label{
-  color:#51741A;
+  color:#557F01;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
@@ -251,8 +255,6 @@ label{
   background-color: white;
   margin-top: 10px;
   padding-top: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 #chat-sidebar{
   height: 440px;
@@ -274,13 +276,13 @@ label{
   font-weight: normal;
 }
 .message-user{
-  background-color: #05B285;
-  color: #F0F0F0;
+  background-color: #015252;
+  color: #EEEAEA;
   float: right;
 }
 .message-other{
-  background-color: #F0F0F0;
-  color: #05B285;
+  background-color: #EEEAEA;
+  color: #015252;
   float: left;
 }
 .messages{
@@ -296,30 +298,32 @@ label{
 }
 
 #message-input{
-  width: 360px;
+  width: 370px;
   resize: none;
 }
 #message-send{
   margin-top: 2px;
+  background-color: #880101;
+  color: #F0F0F0;
 }
 
 .panel-default:hover{
-  border: 2px solid #FFD458;
+  border: 2px solid #CC8686;
 }
 .panel-default{
   border-width: 2px;
   -webkit-transition: border-color 0.5s;
 }
 .panel-default.current-chat{
-  border: 2px solid #FFD458;
+  border: 2px solid #CC8686;
 }
 
 .q-selection-header{
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid #EEEAEA;
   width: 100%;
   height: 60px;
   line-height: 60px;
-  color: #FFD458;
+  color: #880101;
   font-size: 44px;
 }
 

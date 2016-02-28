@@ -2,21 +2,27 @@
 	margin-top: 0;
 	margin-bottom: 0;
 }
+
 #head-bar{
-	background-color: #FFD458;
+	background-color: #AA3939;
 	height: 100%;
-	padding-right: 10px;
-	padding-left: 10px;
+	padding-right: 5%;
+	padding-left: 5%;
+
+  padding-top: 1%;
+  padding-bottom: 1%
 }
 
 .navbar-nav li {
  line-height: 56px;
  font-size: 19px;
+ color: #FFFFFF;
 }
 
 #header-logo{
 	font-size: 60px;
   color: #F0F0F0;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 
 
@@ -34,7 +40,7 @@ body {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 50px;
-  background-color: #FFD458;
+  background-color: #AA3939;
   padding-left: 10px;
 }
 
@@ -50,21 +56,22 @@ body {
 .login-button-wrapper .btn-primary{
 	position: relative;
 	top: 50%;
-	height: 70px;
-	font-size: 25px;
+	height: 65px;
+	font-size: 20px;
 	width: 200px;
-	margin-top: -35px;
-	border-radius: 10px;
+	margin-top: -40px;
+	border-radius: 5px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 #student-login{
-	background-color: #AA62B2;
-	border-color: #AA62B2;
+	background-color: #804C95;
+	border-color: #421553;
 }
 
 #mentor-login{
-	background-color: #05B285;
-	border-color: #05B285;
+	background-color: #51741A;
+	border-color: #2D4506;
 }
 
 #index-content{
@@ -123,8 +130,8 @@ body {
 .portal-nav-btn{
   margin-left: 0;
   color: #F0F0F0;
-  border: 2px solid grey;
-  background-color: #AA62B2;
+  border: 2px solid white;
+  background-color: #354F00;
   text-align: center;
   font-size: 40px;
   padding-top: 15px;
@@ -133,11 +140,12 @@ body {
 }
 
 .portal-nav-btn:hover{
-  background-color: #05B285;
+  background-color: #A5C663;
 }
 
 .active{
-  background-color: #05B285;
+  color: black;
+  background-color: #D4EE9F;
   border-right: 0px;
 }
 
@@ -146,7 +154,7 @@ body {
   background-image: url("image/profile.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  border: 2px solid #FFD458;
+  border: 4px solid #407F7F;
   border-radius: 5px;
 }
 
@@ -159,7 +167,7 @@ body {
 
 .profile-name{
   font-size: 50px;
-  color: #FFD458;
+  color: #000000;
 }
 
 .hide{
@@ -197,7 +205,7 @@ body {
 
 label{
   font-size: 30px;
-  color: #FFD458;
+  color: #0D4D4D;
   display: block;
 }
 

@@ -113,6 +113,10 @@ questions_available.push({
 
 });
 
+function daydiff(one, two){
+	var daylength = 24 * 60 * 60 * 1000;
+	return Math.floor(Math.abs(one.getTime() - two.getTime())/daylength);
+}
 
 function panelize_available_question(question, i){
 	var days_ago;
@@ -170,7 +174,7 @@ $("#answer-button").on('click', function(e){
 
 questions_responded.sort(function(a,b){return b.date_posted.getTime() - a.date_posted.getTime()});
 var days_since = document.getElementById("days-since");
-days_since.innerHTML = "Last question answered " + ((new Date()).getDate() - questions_responded[0].date_posted.getDate()) + " day(s) ago"
+days_since.innerHTML = "Last question answered " + daydiff((new Date()), questions_responded[0].date_posted) + " day(s) ago"
 
 for(i = 1; i <= 5; i++){
 	btn = document.getElementById("portal-nav-btn-" + i);
@@ -210,7 +214,7 @@ function panelize_question(question, i){
 		glyphicon_class += "glyphicon-hourglass";
 	}
 
-	days_ago = (new Date()).getUTCDate() - question.date_posted.getDate();
+	days_ago = daydiff((new Date()), question.date_posted);
 
 
 	//Writing panel div for a question
@@ -233,7 +237,7 @@ function fill_question_panel(questions){
 		panel_holder.innerHTML += panelize_question(questions[i], i);
 	}
 
-	days_since.innerHTML = "Last question posted " + ((new Date()).getDate() - questions[0].date_posted.getDate()) + " day(s) ago"
+	days_since.innerHTML = "Last question answered " + daydiff((new Date()), questions_responded[0].date_posted) + " day(s) ago"
 }
 
 function chat_panelize_question(question, i){

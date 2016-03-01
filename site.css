@@ -305,12 +305,21 @@ label{
   color: #015252;
   float: left;
 }
+#messages-headline{
+  height: 48px;
+  line-height: 50px;
+  border-bottom: 1px lightgray solid;
+  font-size: 30px;
+  color: #557F01;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  margin-bottom: 4px;
+}
 .messages{
-  height: 380px;
+  height: 300px;
 }
 .message-input{
-  height: 50px;
-  line-height: 50px;
+  height: 30px;
+  line-height: 30px;
   position: relative;
   bottom: 0;
   border-top: 1px solid #F0F0F0;
@@ -372,5 +381,9 @@ label{
 }
 
 #signin-heading{
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#question-label, #question-tags-label{
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }

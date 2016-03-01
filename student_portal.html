@@ -52,11 +52,11 @@
 				<div class="col-xs-9">
 					<form role="form" id="question-form">
 						<div class="form-group">
-							<label for="question">Ask Question</label>
+							<label for="question" id="question-label">Ask Question</label>
 							<textarea type="question" class="form-control" id="question" placeholder="Write your question here. The more details you provide, the easier it is for a mentor to help you quickly."></textarea>
 						</div>
 						<div class="form-group">
-							<label for="Tags">Tags</label>
+							<label for="Tags" id="question-tags-label">Tags</label>
 							<input type="text" class="form-control" id="tags" data-role="tagsinput" placeholder="Add categories related to your question"/>
 						</div>
 						<button type="submit" class="btn btn-default btn-lg" id="question-submit">Post Question</button>
@@ -71,6 +71,7 @@
 				<div class="col-sm-6">
 					<div class="container-fluid">
 						<div id="chat-room" class="jumbotron chat-room">
+							<div id="messages-headline">Donald Trump</div>
 							<div class="messages pre-scrollable"></div>
 							<div class="message-input">
 								<form id="message-form" class="form-inline">
@@ -113,7 +114,7 @@
 						</div>
 					</div>
 				</div>
-			</div></div>
+			</div>
 			<div class="container-fluid text-left hide portal-page" id="portal-page-5"><h1>Help Page (coming soon)</h1></div>
 		</div>
 	</div>

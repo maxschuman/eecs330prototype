@@ -311,6 +311,7 @@ function render_chat(number){
 		$(".messages").append(message_div);
 		$(".messages").scrollTop($(".messages")[0].scrollHeight);
 	}
+	$("#messages-headline").html(current_question.respondent_name);
 }
 
 function find_current_question(){
